@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="p.css" >
+<link rel="stylesheet" type="text/css" href="h.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+h1 {
+  text-align: center;
+}
+</style>
+</head>
+
+<title> SUDOKU</title>
+
+
+
+<style>
+body {
+  padding: 25px;
+  background-image:linear-gradient(to right ,white,#008080);
+  color: black;
+  font-size: 25px;
+}
+
+
+.dark-mode {
+  background-image: linear-gradient(to right,black,grey,black);
+  color: white;
+}
+   
+    .but {
+  background-color: black; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+       
+}
+.but:hover 
+{
+  background-color: purple;
+}
+
+   
+ .button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.12);
+}
+    .text{
+        margin-left:50px;
+    }
+    .side_btn{
+        margin-left: 100px;
+    }
+    #footer_text{
+        color: black;
+    }
+    #dark{
+
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+    .wrap{
+        margin-left: 700px;
+        padding-top: 0px;
+    }
+    #uper_btn{
+margin-left: 100px;}
+    #lower_btn{
+       margin-left: 110px;
+        padding-top: 0px;
+       
+    }
+   
+</style>
+</head>
+<body>
+    <h1 id="sudoku_title">SUDOKU</h1>
+    <button id="dark"class="but button1" onclick="myFunction()">Change Mode</button>
+   
+    <h2>Bonjour! &#128512;</h2>
+<p>I Am Your Smart Sudoku.&#128526; </p>
+
+<script>
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="k.js"></script>
+<!-- </head> -->
+
+<!-- <body> -->
+<div class="wrap">
+    <div id="uper_btn">
+<button type="button" class="sudokubutton1 js-generate-board-btn--easy">Easy</button>
+<button type="button" class="sudokubutton2 js-generate-board-btn--medium">Medium</button>
+<button type="button" class="sudokubutton3 js-generate-board-btn--hard">Hard</button>
+<button type="button" class="sudokubutton4 js-generate-board-btn--very-hard">Very Hard</button>
+    </div>
+<!--generate board buttons-->
+
+<!--the only required html-->
+<div id="sudoku" class="sudoku-board">
+   
+   
+</div>
+    <div id="lower_btn">
+    <button type="button" class="sudokubutton5 js-solve-step-btn">One Step</button>
+<button type="button" class="sudokubutton6 js-solve-all-btn">All</button>
+<!--clear board btn-->
+<button type="button" class="sudokubutton7 js-clear-board-btn">Clear Board</button>
+    </div>
+<!--solve buttons-->
+
+
+</div>
+   
+<script>
+ var $candidateToggle = $(".js-candidate-toggle"),
+ $generateBoardBtnEasy = $(".js-generate-board-btn--easy"),
+ $generateBoardBtnMedium = $(".js-generate-board-btn--medium"),
+ $generateBoardBtnHard = $(".js-generate-board-btn--hard"),
+ $generateBoardBtnVeryHard = $(".js-generate-board-btn--very-hard"),
+ 
+ $solveStepBtn = $(".js-solve-step-btn"),
+ $solveAllBtn = $(".js-solve-all-btn"),
+ $clearBoardBtn = $(".js-clear-board-btn"),
+ 
+ mySudokuJS = $("#sudoku").sudokuJS({
+  difficulty: "very hard"
+  //change state of our candidate showing checkbox on change in sudokuJS
+  ,candidateShowToggleFn : function(showing){
+   $candidateToggle.prop("checked", showing);
+  }
+ });
+
+ $solveStepBtn.on("click", mySudokuJS.solveStep);
+ $solveAllBtn.on("click", mySudokuJS.solveAll);
+ $clearBoardBtn.on("click", mySudokuJS.clearBoard);
+
+ $generateBoardBtnEasy.on("click", function(){
+  mySudokuJS.generateBoard("easy");
+ });
+ $generateBoardBtnMedium.on("click", function(){
+  mySudokuJS.generateBoard("medium");
+ });
+ $generateBoardBtnHard.on("click", function(){
+  mySudokuJS.generateBoard("hard");
+ });
+ $generateBoardBtnVeryHard.on("click", function(){
+  mySudokuJS.generateBoard("very hard");
+ });
+
+</script>
+    </div>
+</html>
+
